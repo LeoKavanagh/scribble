@@ -48,28 +48,13 @@ function CLIPBOARD_CLASS(canvas_id, autoresize) {
                 ctx.drawImage(pastedImage, 0, 0);
             }
             else{
-
-                /////////////////////////////////////////////////////////
-                /*
-                 var canvas = ctx.canvas ;
-                 var hRatio = canvas.width  / pastedImage.width    ;
-                 var vRatio =  canvas.height / pastedImage.height  ;
-                 var ratio  = Math.min ( hRatio, vRatio );
-                 var centerShift_x = ( canvas.width - pastedImage.width*ratio ) / 2;
-                 var centerShift_y = ( canvas.height - pastedImage.height*ratio ) / 2;
-                 ctx.clearRect(0, 0, canvas.width, canvas.height);
-                 ctx.drawImage(pastedImage, 0,0, pastedImage.width, pastedImage.height,
-                                   centerShift_x, centerShift_y, pastedImage.width*ratio, pastedImage.height*ratio);
-                */
-                /////////////////////////////////////////////////////////
-                
                 //clear canvas
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
 
                 // set size proportional to image
                 canvas.height = canvas.width * (pastedImage.height / pastedImage.width);
                 // step 1 - resize to X%
-                let prop = 1.0 // 0.9999999995
+                let prop = 1.0 // 0.5
                 var oc = document.createElement('canvas'),
                     octx = oc.getContext('2d');
                 oc.width = pastedImage.width * prop;
@@ -80,7 +65,6 @@ function CLIPBOARD_CLASS(canvas_id, autoresize) {
                 // step 3, resize to final size
                 ctx.drawImage(oc, 0, 0, oc.width * prop, oc.height * prop,
                 0, 0, canvas.width, canvas.height);
-                
 
             }
         };
