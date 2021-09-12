@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Scribble</title>
+  </head>
+<body>
+  <div align="center">
+    <h2>Scribble</h2>
+    <p id="status">Paste an image into the box below:</p>
+    <div class="inputoutput">
+      <canvas style="border:1px solid grey;" id="imageSrc" name="pic" width="620" height="330"></canvas>
+      <canvas style="border:1px solid grey;" id="canvasOutput" width="620" height="330"></canvas>
+    </div>
+    <div class="inputoutput">
+    <button onclick="lines(100, 150);">Check</button>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+
+    function onOpenCvReady() {
+      document.getElementById('status').innerHTML = 'OpenCV.js is ready.';
+    }
+    </script>
+<!-- <script async src="opencv.js" onload="onOpenCvReady();" type="text/javascript"></script> -->
+<script async src="main.js" onload="hello();" type="text/javascript"></script>
+<script async src="https://docs.opencv.org/4.5.3/opencv.js" onload="onOpenCvReady();", type="text/javascript"></script>
+</body>
+</html>
