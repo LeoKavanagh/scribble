@@ -83,6 +83,7 @@ function lines(thresh1, thresh2) {
   let dst = new cv.Mat();
   cv.cvtColor(src, src, cv.COLOR_RGB2GRAY, 0);
   cv.Canny(src, dst, thresh1, thresh2, 3, true);
+  cv.bitwise_not(dst, dst)
   cv.imshow('canvasOutput', dst);
   src.delete(); dst.delete();
 };
