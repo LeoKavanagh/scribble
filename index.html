@@ -9,13 +9,10 @@
 
     <h2>Scribble</h2>
 
-    <p>Upload a file</p>
+    <p id="status">Upload a file, or paste an image into the box below:</p>
     <div>
-      <!-- <div class="caption"><input type="file" id="fileInput" name="file" /></div> -->
       <input type="file" id="fileInput" accept="image/*">
     </div>
-
-    <p id="status">Or paste an image into the box below:</p>
 
     <div class="inputoutput">
       <canvas style="border:1px solid grey;" id="imageSrc" name="pic" width="620" height="330"></canvas>
@@ -33,7 +30,7 @@
 
   <script type="text/javascript">
     function onOpenCvReady() {
-      document.getElementById('status').innerHTML = 'Extract the edges from an image.';
+      console.log("OpenCV ready");
     }
     </script>
 <script async src="main.js" onload="hello();" type="text/javascript"></script>
