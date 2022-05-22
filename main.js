@@ -1,3 +1,27 @@
+var IMAGE_SRC = "imageSrc"
+
+let fileInput = document.getElementById('fileInput');
+fileInput.addEventListener('change', function(ev) { 
+  console.log("detected a change")
+  if(ev.target.files) {
+    let file = ev.target.files[0];
+    var reader  = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = function (e) {
+      var image = new Image();
+      image.src = e.target.result;
+      image.onload = function(ev) {
+        var canvas = document.getElementById('imageSrc');
+        canvas.width = image.width;
+        canvas.height = image.height;
+        var ctx = canvas.getContext('2d');
+        ctx.drawImage(image,0,0);
+      }
+    }
+}});
+
+
+
 var CLIPBOARD = new CLIPBOARD_CLASS("imageSrc", false);
 
 /**
@@ -71,6 +95,7 @@ function CLIPBOARD_CLASS(canvas_id, autoresize) {
         pastedImage.src = source;
     };
 };
+
 
 function lines(thresh1, thresh2) {
 
