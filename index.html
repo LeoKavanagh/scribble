@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scribble</title>
   </head>
 <body>
@@ -14,16 +15,26 @@
       <input type="file" id="fileInput" accept="image/*">
     </div>
 
-    <div class="inputoutput">
-      <canvas style="border:1px solid grey;" id="imageSrc" name="pic" width="620" height="330"></canvas>
+    <div>
+      <canvas style="border:1px solid grey;" id="imageSrc" name="pic" width="200" height="200"></canvas>
     </div>
 
     <div class="inputoutput">
-      <button onclick="lines(100, 150, 'imageSrc');">Detect edges</button>
+        <div>
+          <label for="thresh1">Threshold 1</label>
+          <input type="number" id="thresh1" name="thresh1" min="1" max="500" value="100"></input>
+        </div>
+        <div>
+          <label for="thresh2">Threshold 2</label>
+          <input type="number" id="thresh2" name="thresh2" min="1" max="500" value="150"></input>
+        </div>
+        <div>
+          <button onclick="getLines()">Detect edges</button>
+        </div>
     </div>
-  
-    <div class="inputoutput">
-      <canvas style="border:1px solid grey;" id="canvasOutput" width="620" height="330"></canvas>
+
+    <div>
+      <canvas style="border:1px solid grey;" id="canvasOutput" width="200" height="200"></canvas>
     </div>
 
   </div>

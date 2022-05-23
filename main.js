@@ -1,5 +1,6 @@
 var IMAGE_SRC = "imageSrc"
 
+// image upload
 let fileInput = document.getElementById('fileInput');
 fileInput.addEventListener('change', function(ev) { 
   console.log("detected a change")
@@ -11,7 +12,7 @@ fileInput.addEventListener('change', function(ev) {
       var image = new Image();
       image.src = e.target.result;
       image.onload = function(ev) {
-        var canvas = document.getElementById('imageSrc');
+        var canvas = document.getElementById(IMAGE_SRC);
         canvas.width = image.width;
         canvas.height = image.height;
         var ctx = canvas.getContext('2d');
@@ -21,9 +22,8 @@ fileInput.addEventListener('change', function(ev) {
 }});
 
 
-
-var CLIPBOARD = new CLIPBOARD_CLASS("imageSrc", false);
-
+// imagine pasting
+var CLIPBOARD = new CLIPBOARD_CLASS(IMAGE_SRC, false);
 /**
  * image pasting into canvas
  *
@@ -97,9 +97,10 @@ function CLIPBOARD_CLASS(canvas_id, autoresize) {
 };
 
 
+// Canny edge detection
 function lines(thresh1, thresh2) {
 
-  let canvas = document.getElementById('imageSrc');
+  let canvas = document.getElementById(IMAGE_SRC);
   let ctx = canvas.getContext('2d');
   let imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
 
@@ -114,7 +115,11 @@ function lines(thresh1, thresh2) {
 };
 
 
-function hello() {
-    console.log('main.js loaded')
+function getLines() {
+    var thresh1 = parseFloat(document.getElementById('thresh1').value)
+    var thresh2 = parseFloat(document.getElementById('thresh2').value)
+    console.log(thresh1)
+    console.log(thresh2)
+    console.log('Calling lines')
+    lines(thresh1, thresh2)
 };
-
